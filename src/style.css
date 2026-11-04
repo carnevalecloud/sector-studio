@@ -1,1 +1,52 @@
 @import 'tailwindcss';:root{font-family:Inter,ui-sans-serif,system-ui;color:#dce6f1;background:#10151c}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer;border:1px solid #354353;background:#202b39;color:#dce6f1;border-radius:5px;padding:8px 12px}button:hover{background:#324255}button.chosen,button.active{background:#25445b;border-color:#69b5e6;color:#a9dcff}.primary{background:#24744d;border-color:#36895f;color:white}header{height:60px;background:#1a222d;display:flex;align-items:center;padding:0 16px;gap:24px;border-bottom:1px solid #344253}.brand{display:flex;align-items:center;gap:8px;font-size:18px;letter-spacing:2px;color:#8dc9f0}.brand span{font-size:10px;letter-spacing:3px;color:#8295a8}#projectName{background:#111923;border:1px solid #344253;color:white;border-radius:5px;padding:8px;width:220px}.header-actions{display:flex;gap:7px;margin-left:auto}main{display:grid;grid-template-columns:205px minmax(0,1fr)230px;height:calc(100vh - 60px)}aside{background:#19222e;padding:16px;overflow:auto}aside.tools{border-right:1px solid #344253}aside.inspector{border-left:1px solid #344253}h3{font-size:11px;letter-spacing:2px;color:#8295a8;margin:8px 0 16px}.tools button,#sectorList button{display:block;width:100%;text-align:left;margin-bottom:7px}.hint{font-size:12px;color:#8fa1b4;line-height:1.7}hr{border:0;border-top:1px solid #354353;margin:18px 0}.workspace{display:flex;flex-direction:column;min-width:0}.tabs{display:flex;align-items:center;background:#1b2531;padding:8px;gap:8px}.tabs button{font-size:12px}#status{margin-left:auto;color:#8ca1b5;font-size:12px}#mapWrap,#viewWrap{position:relative;flex:1;min-height:0}#mapCanvas{display:block;width:100%;height:100%;touch-action:none}#viewWrap canvas{width:100%;height:100%;display:block}.reticle{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;font-size:22px;color:#e9edf3}.help{position:absolute;z-index:2;bottom:18px;left:18px;background:#101923b8;padding:10px;font-size:12px;color:#d5e1ee;pointer-events:none}.bottom{background:#1b2531;padding:10px;font-size:12px;color:#8ca1b5;display:flex;justify-content:space-between}label{display:block;color:#aab9ca;font-size:12px;margin:14px 0}label input{display:block;margin-top:6px;width:100%;background:#111923;border:1px solid #354353;color:white;border-radius:4px;padding:7px}label input[type=color]{height:40px}#validation{font-size:12px;color:#8bd8a8}@media(max-width:850px){main{grid-template-columns:120px minmax(0,1fr)}aside.inspector{display:none}.brand span{display:none}header{gap:8px;padding:8px}#projectName{width:120px}.header-actions{gap:3px}.header-actions button{padding:7px;font-size:11px}.tools{padding:8px!important}.tools button{font-size:11px;padding:7px}}
+/* Mobile-first interaction and layout improvements */
+html,body,#app{height:100%;min-height:0}body{overflow:hidden}#app{display:flex;flex-direction:column}
+header{flex-shrink:0;min-height:60px}.workspace{min-height:0;position:relative}
+#mapWrap[hidden],#viewWrap[hidden]{display:none!important}
+#mapWrap,#viewWrap{overflow:hidden;touch-action:none}
+#viewWrap canvas{touch-action:none}
+.mobile-toolbar{display:none}
+.touch-controls{display:none}
+@media(max-width:850px){
+  header{height:auto;min-height:56px;flex-wrap:wrap;row-gap:8px;padding:8px 12px}
+  .brand{font-size:15px;letter-spacing:1px}
+  #projectName{flex:1;min-width:100px;width:auto}
+  .header-actions{order:3;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:0}
+  .header-actions button{min-height:42px;padding:6px 3px;font-size:12px}
+  main{display:block;flex:1;min-height:0;height:auto;position:relative}
+  .workspace{height:100%;min-height:0}
+  .mobile-toolbar{display:flex;align-items:center;gap:8px;background:#1b2531;padding:7px 10px;border-bottom:1px solid #344253;flex-shrink:0}
+  .mobile-toolbar button{min-height:40px;min-width:88px}
+  .mobile-mode-label{margin-left:auto;font-size:11px;color:#8295a8}
+  aside.tools,aside.inspector{display:none;position:absolute;z-index:20;top:0;bottom:0;width:min(85vw,300px);padding:18px!important;box-shadow:0 10px 35px #000a;overflow-y:auto;overscroll-behavior:contain}
+  aside.tools{left:0}aside.inspector{right:0}
+  aside.drawer-open{display:block}
+  aside.tools button,#sectorList button{min-height:44px;font-size:13px}
+  .tabs{flex-shrink:0;gap:5px;padding:6px}
+  .tabs button{min-height:40px}
+  #status{font-size:10px;max-width:110px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+  .bottom{flex-shrink:0;font-size:10px}
+  .touch-controls{display:flex;position:absolute;z-index:5;inset:auto 0 12px 0;height:155px;pointer-events:none;align-items:end;justify-content:space-between;padding:0 15px;gap:10px}
+  .touch-dpad{display:grid;grid-template-columns:repeat(3,46px);grid-template-rows:repeat(3,46px);gap:3px;pointer-events:auto;flex-shrink:0}
+  .touch-dpad button,.touch-run{background:#223448c9;border:1px solid #81b5dc9c;color:#eff8ff;touch-action:none;user-select:none;font-size:18px;border-radius:10px;min-width:44px;min-height:44px}
+  .touch-dpad button.pressed,.touch-run.pressed{background:#3d8ab8}
+  .touch-dpad .up{grid-column:2;grid-row:1}.touch-dpad .left{grid-column:1;grid-row:2}.touch-dpad .down{grid-column:2;grid-row:2}.touch-dpad .right{grid-column:3;grid-row:2}
+  .touch-look-hint{flex:1;height:135px;pointer-events:auto;touch-action:none;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;color:#d3e5f7aa;user-select:none}
+  .touch-run{pointer-events:auto;font-size:12px;align-self:end;margin-bottom:47px}
+  .help{bottom:160px;left:10px;right:10px;font-size:10px;padding:6px}
+  .reticle{top:40%}
+}
+@media(max-width:380px){
+  .brand{font-size:13px}.mobile-mode-label{display:none}
+  .touch-dpad{grid-template-columns:repeat(3,40px);grid-template-rows:repeat(3,40px)}
+  .touch-dpad button{min-width:40px;min-height:40px}
+  .touch-controls{padding:0 8px}
+}
+@media(max-height:530px) and (max-width:950px){
+  .touch-controls{height:125px;bottom:3px}
+  .touch-dpad{grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px)}
+  .touch-dpad button{min-width:36px;min-height:36px;font-size:14px}
+  .touch-look-hint{height:100px}
+  .touch-run{margin-bottom:32px}
+  .help{display:none}
+}
