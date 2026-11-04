@@ -1,4 +1,5 @@
 import './style.css';
+import {installMobile} from './mobile.js';
 import {demoProject} from './demo.js';
 import {makeSector,validateMap} from './geometry.js';
 import {SectorRenderer} from './renderer.js';
@@ -27,3 +28,4 @@ function show3d(on){$('mapWrap').hidden=on;$('viewWrap').hidden=!on;$('mapTab').
 $('mapTab').onclick=()=>{playing=false;renderer.active=false;show3d(false);$('play').textContent='▶ Play'};$('viewTab').onclick=()=>{playing=false;renderer.active=false;show3d(true);$('play').textContent='▶ Play'};
 $('play').onclick=()=>{playing=!playing;if(playing){if(validateMap(map()).length){alert('Fix geometry before playing');playing=false;return}show3d(true);renderer.active=true;$('play').textContent='■ Stop';$('status').textContent='Click viewport to capture mouse'}else{renderer.active=false;if(document.pointerLockElement)document.exitPointerLock();$('play').textContent='▶ Play';show3d(false)}};
 update();
+installMobile(renderer,{zoom(factor){scale=Math.max(8,Math.min(90,scale*factor));draw();}});
