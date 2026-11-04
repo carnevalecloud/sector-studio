@@ -1,0 +1,2 @@
+import {makeSector} from './geometry.js';
+export function demoProject(){return {format:'sector-project',schemaVersion:1,id:'chapel-demo',name:'The Chapel Demo',player:{x:2,y:2,angle:0},maps:[{id:'map01',name:'Chapel Entrance',sectors:[makeSector([{x:0,y:0},{x:8,y:0},{x:8,y:6},{x:0,y:6}],'chapel'),makeSector([{x:8,y:2},{x:13,y:2},{x:13,y:4},{x:8,y:4}],'hall'),makeSector([{x:13,y:0},{x:19,y:0},{x:19,y:7},{x:13,y:7}],'sanctum')]}]};}
